@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxt.dao.SubjectDao">
+    <insert id="addSubject">
+        insert into subject(sid,cno,scontent,sa,sb,sc,sd,skey)
+        values (default,#{cno},#{scontent},#{sa},#{sb},
+                #{sc},#{sd},#{skey})
+    </insert>
+    <update id="updateSingle">
+        update subject set cno=#{cno},
+                           scontent=#{scontent},
+                           sa=#{sa},
+                           sb=#{sb},
+                           sc=#{sc},
+                           sd=#{sd},
+                           skey=#{skey}
+                    where sid=#{sid}
+    </update>
+    <delete id="delSingle">
+        delete from subject where sid=#{sid}
+    </delete>
+
+
+    <select id="getAllSubject" resultType="com.sxt.pojo.Subject">
+        select * from subject
+    </select>
+    <select id="getBySid" resultType="com.sxt.pojo.Subject">
+        select * from subject where sid=#{sid}
+    </select>
+    <select id="getSubject" resultType="com.sxt.pojo.Subject">
+        select * from subject where cno=#{cno}
+    </select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxt.dao.StudentExamDao">
+
+    <insert id="addStudentExam">
+        insert into studentexam(seid,userid,classid,eid,
+                                pname,zscore,score,titime)
+                values
+                    (default,#{userid},#{classid},
+                     #{eid},#{pname},#{zscore},#{score},#{titime})
+    </insert>
+    <delete id="deleteByUser">
+        delete  from studentexam where userid=#{userid}
+    </delete>
+    <delete id="deleteEid">
+        delete from studentexam where eid=#{eid}
+    </delete>
+    <select id="getStuPaperList" resultType="com.sxt.pojo.Studentexam">
+        select  * from studentexam where userid=#{userid}
+    </select>
+    <select id="getIsPaper" resultType="com.sxt.pojo.Studentexam">
+        select * from studentexam where userid=#{userid} and eid=#{eid}
+    </select>
+    <select id="getAllStuScore" resultType="com.sxt.pojo.Studentexam">
+        select * from studentexam where classid=#{classid}
+    </select>
+</mapper>
